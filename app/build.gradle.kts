@@ -39,6 +39,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -54,6 +55,15 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    //lifecycle
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+
+    //logging
+    implementation ("com.jakewharton.timber:timber:5.0.1")
+
     // Json
     implementation(libs.squareup.moshi.kotlin)
 
@@ -66,6 +76,7 @@ dependencies {
     implementation(libs.rxandroid)
     implementation(libs.rxjava)
     implementation(libs.adapter.rxjava3)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx3:1.3.9")
 
     //DI - hilt
     implementation(libs.hilt.android)
