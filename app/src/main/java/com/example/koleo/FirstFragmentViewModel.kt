@@ -19,9 +19,4 @@ class FirstFragmentViewModel @Inject constructor(
     val stations = getStationsUseCase().toObservable()
         .asFlow()
         .flowOn(Dispatchers.IO)
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
-            initialValue = emptyList()
-        )
 }
