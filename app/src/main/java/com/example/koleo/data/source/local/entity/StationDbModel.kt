@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.koleo.data.entities.Station
 import com.example.koleo.data.source.local.dao.StationsDao
 
-@Entity(tableName = StationsDao.DB_STATION)
+@Entity(tableName = StationsDao.STATION_TABLE)
 class StationDbModel(
     @PrimaryKey
     val id: Int,

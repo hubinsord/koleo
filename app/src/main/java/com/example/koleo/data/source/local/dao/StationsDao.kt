@@ -14,13 +14,15 @@ interface StationsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertStations(stations: List<StationDbModel>) : Completable
 
-    @Query("DELETE FROM $DB_STATION")
+    @Query("DELETE FROM $STATION_TABLE")
     fun deleteStations() : Completable
 
-    @Query("SELECT * FROM $DB_STATION WHERE id = :id")
+    @Query("SELECT * FROM $STATION_TABLE WHERE id = :id")
     fun getStationById(id: Int): Single<StationDbModel>
 
     companion object {
-        const val DB_STATION = "STATION_TABLE"
+        const val DB_STATION = "STATION_DATABASE"
+        const val STATION_TABLE = "STATION_TABLE"
+        const val STATION_KEYWORDS_TABLE = "STATION_KEYWORDS_TABLE"
     }
 }
