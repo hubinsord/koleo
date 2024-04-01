@@ -14,7 +14,7 @@ data class StationResponseModel(
     @Json(name = "city") val city: String,
     @Json(name = "region") val region: String,
     @Json(name = "country") val country: String,
-    @Json(name = "localised_name") val localizedName: Any?,
+    @Json(name = "localised_name") val localizedName: String?,
     @Json(name = "is_group") val isGroup: Boolean,
     @Json(name = "has_announcements") val hasAnnouncements: Boolean,
     @Json(name = "is_nearby_station_enabled") val isNearbyStationEnabled: Boolean

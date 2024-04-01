@@ -11,7 +11,7 @@ data class Station(
     val city: String,
     val region: String,
     val country: String,
-    val localizedName: Any?,
+    val localizedName: String?,
     val isGroup: Boolean,
     val hasAnnouncements: Boolean,
     val isNearbyStationEnabled: Boolean
