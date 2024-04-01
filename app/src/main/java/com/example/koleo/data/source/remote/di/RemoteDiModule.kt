@@ -1,5 +1,8 @@
 package com.example.koleo.data.source.remote.di
 
+import android.content.Context
+import com.example.koleo.data.interceptors.CacheInterceptor
+import com.example.koleo.data.interceptors.ForceCacheInterceptor
 import com.example.koleo.data.source.remote.api.KoleoApi
 import com.example.koleo.data.source.remote.interceptor.HeaderInterceptor
 import com.squareup.moshi.Moshi
@@ -7,7 +10,9 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -19,6 +24,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RemoteDiModule {
+    private const val CACHE_SIZE = 10L * 1024L * 1024L
+    private const val READ_TIMEOUT_SECONDS = 20L
+    private const val CONNECT_TIMEOUT_SECONDS = 20L
 
     @Singleton
     @Provides
@@ -27,7 +35,10 @@ object RemoteDiModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(moshiConverterFactory: MoshiConverterFactory, client: OkHttpClient) =
+    fun provideRetrofit(
+        moshiConverterFactory: MoshiConverterFactory,
+        client: OkHttpClient,
+    ): Retrofit =
         Retrofit.Builder()
             .baseUrl(KoleoApi.BASE_URL)
             .addConverterFactory(moshiConverterFactory)
@@ -46,12 +57,13 @@ object RemoteDiModule {
 
     @Singleton
     @Provides
-    fun provideHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .readTimeout(20, TimeUnit.SECONDS)
-            .connectTimeout(20, TimeUnit.SECONDS)
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .addInterceptor(HeaderInterceptor())
-            .build()
-    }
+    fun provideHttpClient(@ApplicationContext context: Context) = OkHttpClient.Builder()
+        .readTimeout(READ_TIMEOUT_SECONDS, TimeUnit.SECONDS)
+        .connectTimeout(CONNECT_TIMEOUT_SECONDS, TimeUnit.SECONDS)
+        .cache(Cache(context.cacheDir, CACHE_SIZE))
+        .addNetworkInterceptor(CacheInterceptor())
+        .addInterceptor(ForceCacheInterceptor(context))
+        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        .addInterceptor(HeaderInterceptor())
+        .build()
 }

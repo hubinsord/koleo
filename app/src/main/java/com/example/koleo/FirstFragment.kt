@@ -51,7 +51,7 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.stations.collect{
-                    binding.textviewFirst.text = it.first().name
+                    binding.textviewFirst.text = it.firstOrNull()?.name
                 }
             }
         }
