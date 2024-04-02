@@ -13,8 +13,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:gravity="center_horizontal"
         android:text="@string/plan_header"
         android:textAppearance="@style/TextAppearance.Koleo.Headline5"
+        app:layout_constraintBottom_toTopOf="@id/cvDeparture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,14 +31,14 @@
     <View
         android:id="@+id/vLeftCover"
         android:layout_width="0dp"
-        android:background="@color/background_black"
-        android:layout_height="100dp" />
+        android:layout_height="100dp"
+        android:background="@color/background_black" />
 
     <View
         android:id="@+id/vRightCover"
         android:layout_width="0dp"
-        android:background="@color/background_black"
-        android:layout_height="100dp" />
+        android:layout_height="100dp"
+        android:background="@color/background_black" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvDeparture"
@@ -57,8 +59,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/plan_departure"
-                android:textAppearance="@style/TextAppearance.Koleo.Headline5"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.Koleo.Caption"
                 android:textColor="@color/black"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,7 +95,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvDestination"
+        android:id="@+id/cvArrival"
         android:layout_width="350dp"
         android:layout_height="150dp"
         android:layout_gravity="start"
@@ -109,8 +113,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/plan_arrival"
-                android:textAppearance="@style/TextAppearance.Koleo.Headline5"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.Koleo.Caption"
                 android:textColor="@color/black"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

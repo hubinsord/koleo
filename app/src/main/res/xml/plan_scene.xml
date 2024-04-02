@@ -17,7 +17,7 @@
         motion:constraintSetStart="@+id/start"
         motion:duration="400">
         <OnSwipe
-            motion:touchAnchorId="@+id/cvDestination"
+            motion:touchAnchorId="@+id/cvArrival"
             motion:touchAnchorSide="left"
             motion:dragDirection="dragLeft" />
     </Transition>
@@ -63,7 +63,7 @@
             motion:layout_constraintVertical_bias="0.25" />
 
         <Constraint
-            android:id="@+id/cvDestination"
+            android:id="@+id/cvArrival"
             android:layout_width="350dp"
             android:layout_height="150dp"
             motion:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +90,7 @@
             android:layout_height="100dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintStart_toStartOf="@id/cvDestination"
+            motion:layout_constraintStart_toStartOf="@id/cvArrival"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintVertical_bias="0.25" />
 
@@ -98,10 +98,10 @@
             android:id="@+id/vLine"
             android:layout_width="0dp"
             android:layout_height="2dp"
-            motion:layout_constraintBottom_toBottomOf="@id/cvDestination"
+            motion:layout_constraintBottom_toBottomOf="@id/cvArrival"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toTopOf="@id/cvDestination" />
+            motion:layout_constraintTop_toTopOf="@id/cvArrival" />
 
         <Constraint
             android:id="@+id/cvDeparture"
@@ -113,7 +113,7 @@
             motion:layout_constraintVertical_bias="0.25" />
 
         <Constraint
-            android:id="@+id/cvDestination"
+            android:id="@+id/cvArrival"
             android:layout_width="350dp"
             android:layout_height="150dp"
             motion:layout_constraintBottom_toBottomOf="parent"

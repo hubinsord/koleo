@@ -16,11 +16,9 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DistanceFragment : Fragment(R.layout.fragment_distance) {
-
-    val viewmodel by viewModels<DistanceViewModel>()
+    private val viewModel by viewModels<DistanceViewModel>()
     private var _binding: FragmentDistanceBinding? = null
     private val binding get() = _binding!!
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,8 +30,8 @@ class DistanceFragment : Fragment(R.layout.fragment_distance) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initListeners()
         initObservers()
+        initDistance()
     }
 
     override fun onDestroyView() {
@@ -41,24 +39,25 @@ class DistanceFragment : Fragment(R.layout.fragment_distance) {
         _binding = null
     }
 
-    private fun initListeners() {}
-
     private fun initObservers() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
-                    viewmodel.departure.collect {
-                        binding.tvDeparture.text = it?.name ?: "no station"
+                    viewModel.departure.collect {
+                        binding.tvDepartureStation.text = it.name
                     }
                 }
-
                 launch {
-                    viewmodel.distance.collect {
-                        binding.tvDistance.text = it.toString() ?: "0.00"
+                    viewModel.arrival.collect {
+                        binding.tvArrivalStation.text = it.name
                     }
                 }
             }
         }
+    }
+
+    private fun initDistance() {
+        binding.tvDistanceValue.text = viewModel.distance.toString()
     }
 }
 

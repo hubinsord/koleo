@@ -6,9 +6,12 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="plan_fragment_label">Plan Fragment</string>
     <string name="distance_fragment_label">Distance Fragment</string>
-    <string name="plan_header">Plan your journey</string>
+    <string name="plan_header">Input your stations</string>
     <string name="plan_departure">Departure</string>
     <string name="plan_arrival">Arrival</string>
+    <string name="distance_departure">Departure</string>
+    <string name="distance_arrival">Arrival</string>
+    <string name="distance_distance">Distance (meters)</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="ic_location">Location</string>

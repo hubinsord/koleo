@@ -1,30 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tvDeparture"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvDepartureHeader"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="station"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/distance_departure"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.Koleo.Caption"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/tvDepartureStation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="@color/black" />
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/tvDistance"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvDepartureStation"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="distance"
-        app:layout_constraintTop_toBottomOf="@+id/tvDeparture"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:textAppearance="@style/TextAppearance.Koleo.Headline4"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/tvArrivalHeader"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="@color/black" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDepartureHeader"
+        tools:text="Poznan" />
 
+    <TextView
+        android:id="@+id/tvArrivalHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/distance_arrival"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.Koleo.Caption"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/tvArrivalStation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDepartureStation" />
+
+    <TextView
+        android:id="@+id/tvArrivalStation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/distance_departure"
+        android:textAppearance="@style/TextAppearance.Koleo.Headline4"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/tvDistanceHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvArrivalHeader"
+        tools:text="Leszno" />
+
+    <TextView
+        android:id="@+id/tvDistanceHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/distance_distance"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.Koleo.Caption"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/tvDistanceValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvArrivalStation" />
+
+    <TextView
+        android:id="@+id/tvDistanceValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:textAppearance="@style/TextAppearance.Koleo.Headline4"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDistanceHeader"
+        tools:text="40.76" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

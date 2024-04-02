@@ -13,13 +13,15 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.koleo.R
 import com.example.koleo.data.entities.Station
 import com.example.koleo.databinding.FragmentPlanBinding
 import com.example.koleo.presentation.extensions.afterTextChanged
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
-class PlanFragment : Fragment() {
+@AndroidEntryPoint
+class PlanFragment : Fragment(R.layout.fragment_plan) {
     private val viewModel by viewModels<PlanViewModel>()
     private var _binding: FragmentPlanBinding? = null
     private val binding get() = _binding!!
@@ -64,13 +66,11 @@ class PlanFragment : Fragment() {
                 launch {
                     viewModel.departure.collect {
                         etDeparture.setText("")
-                        tvDeparture.text = it.name
                     }
                 }
                 launch {
                     viewModel.arrival.collect {
                         etArrival.setText("")
-                        tvArrival.text = it.name
                     }
                 }
                 launch {
@@ -86,18 +86,13 @@ class PlanFragment : Fragment() {
                                 etArrival.requestFocus()
                             }
 
-                            is PlanEvent.ShowDistanceScreen ->{
-                                Timber.tag("TEST03").d(it.departureStation.toString(), it.arrivalStation.toString())
-                                val action = PlanFragmentDirections
+                            is PlanEvent.ShowDistanceScreen -> findNavController().navigate(
+                                PlanFragmentDirections
                                     .actionPlanFragmentToDistanceFragment(
                                         it.departureStation,
                                         it.arrivalStation
                                     )
-                                findNavController().navigate(
-//                                    R.id.action_PlanFragment_to_DistanceFragment
-                                    action
-                                )
-                            }
+                            )
                         }
                     }
                 }
