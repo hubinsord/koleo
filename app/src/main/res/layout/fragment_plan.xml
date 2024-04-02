@@ -9,10 +9,22 @@
     app:layoutDescription="@xml/plan_scene"
     tools:showPaths="true">
 
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/plan_header"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Plan your journey" />
+
     <View
         android:id="@+id/vLine"
         android:layout_width="0dp"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="@color/black" />
 
     <View
@@ -29,26 +41,114 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvDeparture"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
         android:layout_gravity="end"
         app:cardBackgroundColor="@color/white"
         app:cardElevation="10dp"
-        tools:layout_width="100dp" />
+        tools:layout_width="100dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:id="@+id/tvDeparture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plan_departure"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivDeparture"
+                android:layout_width="24dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="25dp"
+                android:contentDescription="@string/ic_location"
+                android:paddingBottom="5dp"
+                android:src="@drawable/ic_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDeparture" />
+
+            <EditText
+                android:id="@+id/etDeparture"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="postalAddress"
+                android:inputType="textCapWords"
+                android:src="@drawable/ic_location"
+                app:layout_constraintBottom_toBottomOf="@id/ivDeparture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivDeparture"
+                tools:ignore="LabelFor" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvDestination"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
         android:layout_gravity="start"
         app:cardBackgroundColor="@color/white"
         app:cardElevation="10dp"
-        tools:layout_width="100dp" />
+        tools:layout_width="100dp">
 
-    <Button
-        android:id="@+id/btnTest"
-        android:layout_width="200dp"
-        android:layout_height="64dp"
-        android:text="Button" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:id="@+id/tvArrival"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plan_arrival"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivArrival"
+                android:layout_width="24dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="25dp"
+                android:contentDescription="@string/ic_location"
+                android:paddingBottom="5dp"
+                android:src="@drawable/ic_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvArrival" />
+
+            <EditText
+                android:id="@+id/etArrival"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="postalAddress"
+                android:inputType="textCapWords"
+                android:src="@drawable/ic_location"
+                app:layout_constraintBottom_toBottomOf="@id/ivArrival"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivArrival"
+                tools:ignore="LabelFor" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvItems"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvDeparture"
+        tools:itemCount="7"
+        tools:listitem="@layout/item_station" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

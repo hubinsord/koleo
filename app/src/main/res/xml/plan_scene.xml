@@ -3,9 +3,24 @@
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        motion:constraintSetStart="@+id/start"
         motion:constraintSetEnd="@+id/end"
-        motion:duration="400"/>
+        motion:constraintSetStart="@+id/start"
+        motion:duration="400">
+        <OnSwipe
+            motion:touchAnchorId="@+id/cvDeparture"
+            motion:touchAnchorSide="right"
+            motion:dragDirection="dragRight" />
+    </Transition>
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="400">
+        <OnSwipe
+            motion:touchAnchorId="@+id/cvDestination"
+            motion:touchAnchorSide="left"
+            motion:dragDirection="dragLeft" />
+    </Transition>
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
@@ -13,53 +28,48 @@
             android:layout_width="0dp"
             android:layout_height="100dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="@id/cvDeparture"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="0.25" />
 
         <Constraint
             android:id="@+id/vRightCover"
             android:layout_width="0dp"
             android:layout_height="100dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintStart_toEndOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintStart_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="0.25" />
 
         <Constraint
             android:id="@+id/vLine"
             android:layout_width="0dp"
-            android:layout_height="2dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_height="1dp"
+            motion:layout_constraintBottom_toBottomOf="@id/cvDeparture"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/cvDeparture" />
 
         <Constraint
             android:id="@+id/cvDeparture"
-            android:layout_width="250dp"
-            android:layout_height="400dp"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="0.25" />
 
         <Constraint
             android:id="@+id/cvDestination"
-            android:layout_width="250dp"
-            android:layout_height="400dp"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toEndOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
-
-        <Constraint
-            android:id="@+id/btnTest"
-            android:layout_width="200dp"
-            android:layout_height="64dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/cvDeparture" />
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="0.25" />
 
     </ConstraintSet>
 
@@ -69,53 +79,48 @@
             android:layout_width="0dp"
             android:layout_height="100dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toStartOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="0.25" />
 
         <Constraint
             android:id="@+id/vRightCover"
             android:layout_width="0dp"
             android:layout_height="100dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintStart_toStartOf="@id/cvDestination"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintStart_toStartOf="@id/cvDestination"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="0.25" />
 
         <Constraint
             android:id="@+id/vLine"
             android:layout_width="0dp"
             android:layout_height="2dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="@id/cvDestination"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/cvDestination" />
 
         <Constraint
             android:id="@+id/cvDeparture"
-            android:layout_width="250dp"
-            android:layout_height="400dp"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="0.25" />
 
         <Constraint
             android:id="@+id/cvDestination"
-            android:layout_width="250dp"
-            android:layout_height="400dp"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
-
-        <Constraint
-            android:id="@+id/btnTest"
-            android:layout_width="200dp"
-            android:layout_height="64dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/cvDestination" />
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="0.25" />
 
     </ConstraintSet>
 

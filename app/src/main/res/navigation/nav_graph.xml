@@ -30,7 +30,17 @@
     </fragment>
     <fragment
         android:id="@+id/PlanFragment"
-        android:name="com.example.koleo.PlanFragment"
+        android:name="com.example.koleo.presentation.feature.plan.PlanFragment"
         android:label="@string/plan_fragment_label"
-        tools:layout="@layout/fragment_plan"/>
+        tools:layout="@layout/fragment_plan">
+
+        <action
+            android:id="@+id/action_PlanFragment_to_DistanceFragment"
+            app:destination="@id/DistanceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/DistanceFragment"
+        android:name="com.example.koleo.presentation.feature.distance.DistanceFragment"
+        android:label="@string/distance_fragment_label"
+        tools:layout="@layout/fragment_distance" />
 </navigation>

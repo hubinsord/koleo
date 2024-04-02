@@ -5,8 +5,14 @@
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="plan_fragment_label">Plan Fragment</string>
+    <string name="distance_fragment_label">Distance Fragment</string>
+    <string name="plan_header">Plan your journey</string>
+    <string name="plan_departure">Departure</string>
+    <string name="plan_arrival">Arrival</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="ic_location">Location</string>
+    <string name="ic_station">Station</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
