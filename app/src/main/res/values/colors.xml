@@ -13,4 +13,8 @@
     <color name="grey_700">#616161</color>
     <color name="grey_900">#212121</color>
     <color name="red_500">#FA3B38</color>
+
+    <color name="brand">#3a97ff</color>
+    <color name="background_black">#18191a</color>
+    <color name="text_primary">@color/white</color>
 </resources>

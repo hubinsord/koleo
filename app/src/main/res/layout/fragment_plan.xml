@@ -5,7 +5,6 @@
     android:id="@+id/mlRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     app:layoutDescription="@xml/plan_scene"
     tools:showPaths="true">
 
@@ -15,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:text="@string/plan_header"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+        android:textAppearance="@style/TextAppearance.Koleo.Headline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,19 +24,19 @@
         android:id="@+id/vLine"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="@color/black" />
+        android:background="@color/white" />
 
     <View
         android:id="@+id/vLeftCover"
         android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:background="@color/white" />
+        android:background="@color/background_black"
+        android:layout_height="100dp" />
 
     <View
         android:id="@+id/vRightCover"
         android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:background="@color/white" />
+        android:background="@color/background_black"
+        android:layout_height="100dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvDeparture"
@@ -58,7 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/plan_departure"
-                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+                android:textAppearance="@style/TextAppearance.Koleo.Headline5"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,6 +80,7 @@
                 android:autofillHints="postalAddress"
                 android:inputType="textCapWords"
                 android:src="@drawable/ic_location"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@id/ivDeparture"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/ivDeparture"
@@ -108,7 +109,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/plan_arrival"
-                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+                android:textAppearance="@style/TextAppearance.Koleo.Headline5"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -130,6 +132,7 @@
                 android:autofillHints="postalAddress"
                 android:inputType="textCapWords"
                 android:src="@drawable/ic_location"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@id/ivArrival"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/ivArrival"
