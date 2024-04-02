@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "koleo"
+rootProject.name = "Koleo"
 include(":app")

@@ -3,31 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/PlanFragment">
 
-    <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.koleo.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+<!--    <fragment-->
+<!--        android:id="@+id/FirstFragment"-->
+<!--        android:name="com.example.koleo.FirstFragment"-->
+<!--        android:label="@string/first_fragment_label"-->
+<!--        tools:layout="@layout/fragment_first">-->
 
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_PlanFragment"
-            app:destination="@id/PlanFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.koleo.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+<!--        <action-->
+<!--            android:id="@+id/action_FirstFragment_to_SecondFragment"-->
+<!--            app:destination="@id/SecondFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_FirstFragment_to_PlanFragment"-->
+<!--            app:destination="@id/PlanFragment" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/SecondFragment"-->
+<!--        android:name="com.example.koleo.SecondFragment"-->
+<!--        android:label="@string/second_fragment_label"-->
+<!--        tools:layout="@layout/fragment_second">-->
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+<!--        <action-->
+<!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
+<!--            app:destination="@id/FirstFragment" />-->
+<!--    </fragment>-->
     <fragment
         android:id="@+id/PlanFragment"
         android:name="com.example.koleo.presentation.feature.plan.PlanFragment"
@@ -42,5 +42,11 @@
         android:id="@+id/DistanceFragment"
         android:name="com.example.koleo.presentation.feature.distance.DistanceFragment"
         android:label="@string/distance_fragment_label"
-        tools:layout="@layout/fragment_distance" />
+        tools:layout="@layout/fragment_distance" >
+        <argument
+            android:name="departureStation"
+            app:argType="com.example.koleo.data.entities.Station" />
+        <argument android:name="arrivalStation"
+            app:argType="com.example.koleo.data.entities.Station" />
+    </fragment>
 </navigation>

@@ -13,12 +13,102 @@ import kotlinx.coroutines.launch
 
 class PlanViewModel : ViewModel() {
     private val stations = listOf(
-        Station(0, "Garbary", "Garbary", 30.456, 30.123, 0, null, "Poznan", "", "", "", false, false, false),
-        Station(1, "Ogrody", "Ogrody", 30.456, 30.123, 0, null, "Poznan", "", "", "", false, false, false),
-        Station(2, "Wilda", "Wilda", 30.456, 30.123, 0, null, "Poznan", "", "", "", false, false, false),
-        Station(3, "Wilczak", "Wilczak", 30.456, 30.123, 0, null, "Poznan", "", "", "", false, false, false),
-        Station(4, "Pestka", "Pestka", 30.456, 30.123, 0, null, "Poznan", "", "", "", false, false, false),
-        Station(5, "Grunwald", "Grunwald", 30.456, 30.123, 0, null, "Poznan", "", "", "", false, false, false),
+        Station(
+            0,
+            "Garbary",
+            "Garbary",
+            30.456,
+            30.123,
+            0,
+            null,
+            "Poznan",
+            "",
+            "",
+            "",
+            false,
+            false,
+            false
+        ),
+        Station(
+            1,
+            "Ogrody",
+            "Ogrody",
+            30.456,
+            30.123,
+            0,
+            null,
+            "Poznan",
+            "",
+            "",
+            "",
+            false,
+            false,
+            false
+        ),
+        Station(
+            2,
+            "Wilda",
+            "Wilda",
+            30.456,
+            30.123,
+            0,
+            null,
+            "Poznan",
+            "",
+            "",
+            "",
+            false,
+            false,
+            false
+        ),
+        Station(
+            3,
+            "Wilczak",
+            "Wilczak",
+            30.456,
+            30.123,
+            0,
+            null,
+            "Poznan",
+            "",
+            "",
+            "",
+            false,
+            false,
+            false
+        ),
+        Station(
+            4,
+            "Pestka",
+            "Pestka",
+            30.456,
+            30.123,
+            0,
+            null,
+            "Poznan",
+            "",
+            "",
+            "",
+            false,
+            false,
+            false
+        ),
+        Station(
+            5,
+            "Grunwald",
+            "Grunwald",
+            30.456,
+            30.123,
+            0,
+            null,
+            "Poznan",
+            "",
+            "",
+            "",
+            false,
+            false,
+            false
+        ),
     )
 
     private val _state = MutableStateFlow<PlanState>(PlanState.Departure(emptyList()))
@@ -58,7 +148,11 @@ class PlanViewModel : ViewModel() {
     private fun arrivalStationSelected(station: Station) {
         viewModelScope.launch {
             _arrival.emit(station)
-            _event.send(PlanEvent.ShowDistanceScreen)
+            _departure.value?.let { departure ->
+                _arrival.value?.let { arrival ->
+                    _event.send(PlanEvent.ShowDistanceScreen(departure, arrival))
+                }
+            }
         }
     }
 

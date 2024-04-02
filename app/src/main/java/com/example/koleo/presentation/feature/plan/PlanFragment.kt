@@ -13,11 +13,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.koleo.R
 import com.example.koleo.data.entities.Station
 import com.example.koleo.databinding.FragmentPlanBinding
 import com.example.koleo.presentation.extensions.afterTextChanged
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class PlanFragment : Fragment() {
     private val viewModel by viewModels<PlanViewModel>()
@@ -27,7 +27,7 @@ class PlanFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentPlanBinding.inflate(inflater, container, false)
         return binding.root
@@ -80,14 +80,24 @@ class PlanFragment : Fragment() {
                                 root.transitionToStart()
                                 etDeparture.requestFocus()
                             }
+
                             is PlanEvent.ShowArrival -> {
                                 root.transitionToEnd()
                                 etArrival.requestFocus()
                             }
-                            is PlanEvent.ShowDistanceScreen ->
+
+                            is PlanEvent.ShowDistanceScreen ->{
+                                Timber.tag("TEST03").d(it.departureStation.toString(), it.arrivalStation.toString())
+                                val action = PlanFragmentDirections
+                                    .actionPlanFragmentToDistanceFragment(
+                                        it.departureStation,
+                                        it.arrivalStation
+                                    )
                                 findNavController().navigate(
-                                    R.id.action_PlanFragment_to_DistanceFragment
+//                                    R.id.action_PlanFragment_to_DistanceFragment
+                                    action
                                 )
+                            }
                         }
                     }
                 }

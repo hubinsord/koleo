@@ -1,5 +1,9 @@
 package com.example.koleo.data.entities
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Station(
     val id: Int,
     val name: String,
@@ -15,4 +19,4 @@ data class Station(
     val isGroup: Boolean,
     val hasAnnouncements: Boolean,
     val isNearbyStationEnabled: Boolean
-)
+) : Parcelable

@@ -10,5 +10,5 @@ sealed class PlanState(val items: List<Station>) {
 sealed interface PlanEvent {
     data object ShowDeparture : PlanEvent
     data object ShowArrival : PlanEvent
-    data object ShowDistanceScreen : PlanEvent
+    data class ShowDistanceScreen(val departureStation: Station, val arrivalStation: Station) : PlanEvent
 }
