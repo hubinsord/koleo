@@ -1,12 +1,12 @@
 package com.example.koleo.data.source.local
 
 import com.example.koleo.data.entities.Station
-import com.example.koleo.data.entities.StationKeywords
+import com.example.koleo.data.entities.StationKeyword
 import com.example.koleo.data.source.local.database.StationDatabase
 import com.example.koleo.data.source.local.entity.toStation
 import com.example.koleo.data.source.local.entity.toStationDbModel
-import com.example.koleo.data.source.local.entity.toStationKeywords
-import com.example.koleo.data.source.local.entity.toStationKeywordsDbModel
+import com.example.koleo.data.source.local.entity.toStationKeyword
+import com.example.koleo.data.source.local.entity.toStationKeywordDbEntity
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
@@ -24,12 +24,12 @@ class StationLocalDataSource @Inject constructor(
         stationDao.getStationById(id)
             .map { it.toStation() }
 
-    fun saveStationKeywords(keywords: List<StationKeywords>) =
-        stationDao.insertStationKeywords(keywords.map { it.toStationKeywordsDbModel() })
+    fun saveStationKeywords(keywords: List<StationKeyword>) =
+        stationDao.insertStationKeywords(keywords.map { it.toStationKeywordDbEntity() })
 
-    fun getStationByName(searchQuery: String): Single<List<StationKeywords>> =
+    fun getStationByName(searchQuery: String): Single<List<StationKeyword>> =
         stationDao.getStationByName(searchQuery)
             .map { stationKeywordsDbModel ->
-                stationKeywordsDbModel.map { it.toStationKeywords() }
+                stationKeywordsDbModel.map { it.toStationKeyword() }
             }
 }

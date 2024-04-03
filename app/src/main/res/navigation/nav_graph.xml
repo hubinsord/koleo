@@ -4,39 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/PlanFragment">
-
-<!--    <fragment-->
-<!--        android:id="@+id/FirstFragment"-->
-<!--        android:name="com.example.koleo.FirstFragment"-->
-<!--        android:label="@string/first_fragment_label"-->
-<!--        tools:layout="@layout/fragment_first">-->
-
-<!--        <action-->
-<!--            android:id="@+id/action_FirstFragment_to_SecondFragment"-->
-<!--            app:destination="@id/SecondFragment" />-->
-<!--        <action-->
-<!--            android:id="@+id/action_FirstFragment_to_PlanFragment"-->
-<!--            app:destination="@id/PlanFragment" />-->
-<!--    </fragment>-->
-<!--    <fragment-->
-<!--        android:id="@+id/SecondFragment"-->
-<!--        android:name="com.example.koleo.SecondFragment"-->
-<!--        android:label="@string/second_fragment_label"-->
-<!--        tools:layout="@layout/fragment_second">-->
-
-<!--        <action-->
-<!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
-<!--            app:destination="@id/FirstFragment" />-->
-<!--    </fragment>-->
     <fragment
         android:id="@+id/PlanFragment"
         android:name="com.example.koleo.presentation.feature.plan.PlanFragment"
         android:label="@string/plan_fragment_label"
         tools:layout="@layout/fragment_plan">
-
         <action
             android:id="@+id/action_PlanFragment_to_DistanceFragment"
-            app:destination="@id/DistanceFragment" />
+            app:destination="@id/DistanceFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/DistanceFragment"

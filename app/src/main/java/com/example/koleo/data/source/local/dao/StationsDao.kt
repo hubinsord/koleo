@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.koleo.data.source.local.entity.StationDbModel
-import com.example.koleo.data.source.local.entity.StationKeywordsDbModel
+import com.example.koleo.data.source.local.entity.StationKeywordDbEntity
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 
@@ -21,11 +21,17 @@ interface StationsDao {
     @Query("SELECT * FROM $STATION_TABLE WHERE id = :id")
     fun getStationById(id: Int): Single<StationDbModel>
 
+    @Query("SELECT * FROM $STATION_TABLE")
+    fun getAllStations(): Single<StationDbModel>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertStationKeywords(keywords: List<StationKeywordsDbModel>) : Completable
+    fun insertStationKeywords(keywords: List<StationKeywordDbEntity>) : Completable
 
     @Query("SELECT * FROM $STATION_KEYWORDS_TABLE WHERE keyword LIKE '%' || :searchQuery || '%' ORDER BY keyword ASC")
-    fun getStationByName(searchQuery: String): Single<List<StationKeywordsDbModel>>
+    fun getStationByName(searchQuery: String): Single<List<StationKeywordDbEntity>>
+
+    @Query("SELECT * FROM $STATION_KEYWORDS_TABLE")
+    fun getAllStationKeywords(): Single<List<StationKeywordDbEntity>>
 
     companion object {
         const val DB_STATION = "STATION_DATABASE"

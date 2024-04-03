@@ -3,7 +3,7 @@ package com.example.koleo.data.source.remote.entity
 import com.example.koleo.data.entities.Station
 import com.squareup.moshi.Json
 
-data class StationResponseModel(
+data class StationResponseEntity(
     @Json(name = "id") val id: Int,
     @Json(name = "name") val name: String,
     @Json(name = "name_slug") val nameSlug: String,
@@ -20,7 +20,7 @@ data class StationResponseModel(
     @Json(name = "is_nearby_station_enabled") val isNearbyStationEnabled: Boolean
 )
 
-fun StationResponseModel.toStation(): Station = Station(
+fun StationResponseEntity.toStation(): Station = Station(
     id = id,
     name = name,
     nameSlug = nameSlug,

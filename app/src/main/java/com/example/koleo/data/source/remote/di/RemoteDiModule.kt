@@ -1,8 +1,8 @@
 package com.example.koleo.data.source.remote.di
 
 import android.content.Context
-import com.example.koleo.data.interceptors.CacheInterceptor
-import com.example.koleo.data.interceptors.ForceCacheInterceptor
+import com.example.koleo.data.source.remote.interceptor.CacheInterceptor
+import com.example.koleo.data.source.remote.interceptor.ForceCacheInterceptor
 import com.example.koleo.data.source.remote.api.KoleoApi
 import com.example.koleo.data.source.remote.interceptor.HeaderInterceptor
 import com.squareup.moshi.Moshi

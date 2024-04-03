@@ -1,4 +1,4 @@
-package com.example.koleo.data.interceptors
+package com.example.koleo.data.source.remote.interceptor
 
 import android.content.Context
 import android.net.ConnectivityManager

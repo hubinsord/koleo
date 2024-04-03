@@ -5,9 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.example.koleo.data.entities.Station
 import com.example.koleo.domain.usecase.CalculateDistanceUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.filterNotNull
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,19 +15,24 @@ class DistanceViewModel @Inject constructor(
 
     private val departureArgs = state.get<Station>(ARG_DEPARTURE_STATION)
     private val arrivalArgs = state.get<Station>(ARG_ARRIVAL_STATION)
-
-    private val _departure = MutableStateFlow(departureArgs)
-    val departure = _departure.asStateFlow().filterNotNull()
-
-    private val _arrival = MutableStateFlow(arrivalArgs)
-    val arrival = _arrival.asStateFlow().filterNotNull()
-
+    val departureName
+        get() = departureArgs?.name
+    val arrivalName
+        get() = arrivalArgs?.name
+    val departureLatitude
+        get() = departureArgs?.latitude ?: 0.0
+    val departureLongitude
+        get() = departureArgs?.longitude ?: 0.0
+    val arrivalLatitude
+        get() = arrivalArgs?.latitude ?: 0.0
+    val arrivalLongitude
+        get() = arrivalArgs?.longitude ?: 0.0
     val distance
         get() = calculateDistanceUseCase(
-            departureArgs?.latitude ?: 0.00,
-            departureArgs?.longitude ?: 0.00,
-            arrivalArgs?.latitude ?: 0.00,
-            arrivalArgs?.longitude ?: 0.00
+            departureLatitude,
+            departureLongitude,
+            arrivalLatitude,
+            arrivalLongitude,
         )
 
     companion object {

@@ -1,7 +1,7 @@
 package com.example.koleo.data
 
 import com.example.koleo.data.entities.Station
-import com.example.koleo.data.entities.StationKeywords
+import com.example.koleo.data.entities.StationKeyword
 import com.example.koleo.data.source.local.StationLocalDataSource
 import com.example.koleo.data.source.remote.StationRemoteDataSource
 import io.reactivex.rxjava3.core.Single
@@ -14,6 +14,6 @@ class StationRepository @Inject constructor(
     fun getStations(): Single<List<Station>> =
         remoteDataSource.getStations()
 
-    fun getStationKeywords(): Single<List<StationKeywords>> =
+    fun getStationKeywords(): Single<List<StationKeyword>> =
         remoteDataSource.getStationKeywords()
 }
