@@ -2,9 +2,9 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("com.google.dagger.hilt.android")
-    kotlin("kapt")
-    id ("kotlin-parcelize")
+    id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -44,51 +44,49 @@ android {
 }
 
 dependencies {
+    // UI
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 
-    //lifecycle
+    // Lifecycle
     implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.extensions)
 
-    //logging
-    implementation("com.jakewharton.timber:timber:5.0.1")
-
-    // Json
-    implementation(libs.squareup.moshi.kotlin)
-
-    // Retrofit
+    // Networking
     implementation(libs.converter.moshi)
     implementation(libs.retrofit)
     implementation(libs.logging.interceptor)
+    implementation(libs.squareup.moshi.kotlin)
 
-    //RxJava
+    // Architecture
     implementation(libs.rxandroid)
     implementation(libs.rxjava)
     implementation(libs.adapter.rxjava3)
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx3:1.3.9")
+    implementation(libs.kotlinx.coroutines.rx3)
+    implementation(libs.timber)
 
-    //DI - hilt
+    // DI
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
 
-    //Database - Room
-    implementation("androidx.room:room-runtime:2.6.1")
-    annotationProcessor("androidx.room:room-compiler:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")
-    implementation("androidx.room:room-rxjava3:2.6.1")
+    // Database
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.rxjava3)
 
-}
-
-kapt {
-    correctErrorTypes = true
+    // Test
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.runner)
+    androidTestImplementation(libs.androidx.rules)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.espresso.contrib)
+    testImplementation(libs.junit)
 }

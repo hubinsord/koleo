@@ -2,9 +2,10 @@ package com.example.koleo.presentation.feature.plan
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.koleo.data.StationRepository
 import com.example.koleo.data.entities.Station
 import com.example.koleo.data.entities.StationKeyword
+import com.example.koleo.domain.usecase.GetStationKeywordsUseCase
+import com.example.koleo.domain.usecase.GetStationsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,7 +22,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PlanViewModel @Inject constructor(
-    private val repository: StationRepository,
+    private val getStationsUseCase: GetStationsUseCase,
+    private val getStationKeywordsUseCase: GetStationKeywordsUseCase,
 ) : ViewModel() {
 
     init {
@@ -45,11 +47,10 @@ class PlanViewModel @Inject constructor(
 
     private fun fetchStations() {
         viewModelScope.launch {
-            repository.getStations().toObservable()
+            getStationsUseCase.invoke().toObservable()
                 .asFlow()
                 .catch {
-                    if (it is HttpException && it.code() == 504)
-                        _event.send(PlanEvent.ShowError)
+                    if (it is HttpException) _event.send(PlanEvent.ShowError)
                 }
                 .collect { stations = it }
         }
@@ -57,11 +58,10 @@ class PlanViewModel @Inject constructor(
 
     private fun fetchStationKeywords() {
         viewModelScope.launch {
-            repository.getStationKeywords().toObservable()
+            getStationKeywordsUseCase.invoke().toObservable()
                 .asFlow()
                 .catch {
-                    if (it is HttpException && it.code() == 504)
-                        _event.send(PlanEvent.ShowError)
+                    if (it is HttpException) _event.send(PlanEvent.ShowError)
                 }
                 .collect { keywords = it }
         }
